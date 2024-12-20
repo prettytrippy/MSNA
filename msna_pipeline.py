@@ -131,7 +131,7 @@ class MSNA_pipeline():
             avg_loss = running_loss / len(trainloader)
             
             if self.verbose:
-                if (epoch+1) % 16 == 0:
+                if (epoch+1) % 4 == 0:
                     print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}")
             
             scheduler.step(avg_loss)
@@ -272,7 +272,7 @@ class MSNA_pipeline():
             
         self.threshold = result.x[0]
 
-    def train(self, dfs, threshold_train_max_iter=16, learning_rate=0.001, num_epochs=64):
+    def train(self, dfs, threshold_train_max_iter=16, learning_rate=0.001, num_epochs=32):
         if self.verbose:
             print("Processing dataframes.")
 

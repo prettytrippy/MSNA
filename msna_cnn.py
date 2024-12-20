@@ -46,11 +46,11 @@ class MSNA_CNN(nn.Module):
         # Flatten
         x = x.view(x.size(0), -1)
 
-        # Fully connected layer with ReLU activation
+        # Linear layers
         x = F.relu(self.fc1(x))
         x = self.dropout(x)
         
-        # Final layer with sigmoid activation
+        # Classification
         x = self.fc2(x)
         return torch.sigmoid(x)
         
