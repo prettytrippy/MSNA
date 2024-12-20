@@ -131,7 +131,7 @@ class MSNA_pipeline():
             avg_loss = running_loss / len(trainloader)
             
             if self.verbose:
-                if (epoch+1) % 4 == 0:
+                if (epoch+1) % 2 == 0:
                     print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}")
             
             scheduler.step(avg_loss)
@@ -350,6 +350,9 @@ class MSNA_pipeline():
             test_sample = [self.process_dataframe(df) for df in test_sample]
             f1 = np.mean([self.metrics(i) for i in test_sample])
             f1s.append(f1)
+            
+            if self.verbose:
+                print(f"F1 for split{idx}: {f1}")
 
             if self.verbose:
                 print("Current Threshold:", self.threshold)
